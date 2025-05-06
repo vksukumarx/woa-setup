@@ -13,14 +13,11 @@ jobs:
       - name: Setup visual studio
         uses: microsoft/setup-msbuild@v2
 
-      - name: Install winget
+      - name: Install winget and LLVM
         run: |
           # https://github.com/asheroto/winget-install 
           Install-Script winget-install -Force -RequiredVersion 5.0.5
           winget-install -Force
-
-      - name: Check winget
-        run: |
           winget source update
           winget install --id LLVM.LLVM -e
 
