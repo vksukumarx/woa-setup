@@ -13,7 +13,10 @@ jobs:
       - name: Setup visual studio
         uses: microsoft/setup-msbuild@v2
 
+      - name: Install LLVM
+        run:
+          winget install --id=LLVM.LLVM -e
+
       - name: Test shell
-        shell: bash
         run: |
-          which cl
+          get-command cl
