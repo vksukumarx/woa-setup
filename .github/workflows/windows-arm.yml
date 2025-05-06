@@ -17,6 +17,10 @@ jobs:
         run: |
           irm asheroto.com/winget | iex
 
+      - name: Check winget
+        run: |
+          winget /?
+
       - name: Install LLVM
         run: |
           winget search llvm
