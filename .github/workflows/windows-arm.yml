@@ -16,21 +16,7 @@ jobs:
       - name: Install winget
         run: |
           # https://github.com/asheroto/winget-install
-          # Should install dependencies.
-          irm asheroto.com/winget | iex
-          # Now reinstall winget to avoid errors from script above.
-          # https://stackoverflow.com/a/75334942
-          $URL = "https://api.github.com/repos/microsoft/winget-cli/releases/latest"
-          $URL = (Invoke-WebRequest -Uri $URL).Content | ConvertFrom-Json |
-          Select-Object -ExpandProperty "assets" |
-          Where-Object "browser_download_url" -Match '.msixbundle' |
-          Select-Object -ExpandProperty "browser_download_url"
-          # Download
-          Invoke-WebRequest -Uri $URL -OutFile "Setup.msix" -UseBasicParsing
-          # install
-          Add-AppxPackage -Path "Setup.msix"
-          # delete file
-          Remove-Item "Setup.msix"
+          Install-Script winget-install -Force -NoExit
 
       - name: Check winget
         run: |
