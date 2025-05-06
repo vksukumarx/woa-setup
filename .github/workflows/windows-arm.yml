@@ -19,6 +19,10 @@ jobs:
           Install-Script winget-install -Force
           winget-install
 
+      - name: Test winget
+        run:
+          winget search LLVM
+
       - name: Install LLVM
         run:
           winget install --id=LLVM.LLVM -e
