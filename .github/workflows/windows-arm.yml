@@ -14,7 +14,10 @@ jobs:
         uses: microsoft/setup-msbuild@v2
 
       - name: Install winget
-        uses: Cyberboss/install-winget@v1
+        run: |
+          # https://github.com/asheroto/winget-install
+          Install-Script winget-install -Force
+          winget-install
 
       - name: Install LLVM
         run:
