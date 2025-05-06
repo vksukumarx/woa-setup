@@ -19,7 +19,7 @@ jobs:
        
       - name: Install LLVM
         run: |
-          start /wait LLVM-woa64.exe
+          Start-Process -FilePath ".\LLVM-woa64.exe" -ArgumentList "/S" -Wait
        
       - name: Add LLVM to PATH
         run: |
