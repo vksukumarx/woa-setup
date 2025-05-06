@@ -26,7 +26,7 @@ jobs:
           Invoke-WebRequest -Uri https://aka.ms/Microsoft.VCLibs.ARM64.14.00.Desktop.appx -OutFile VCLibs.appx
           Add-AppxPackage VCLibs.appx
        
-          Invoke-WebRequest -Uri https://github.com/microsoft/winget-cli/releases/download/v1.10.390/Microsoft.DesktopAppInstaller_1.25.390.0_arm64__8wekyb3d8bbwe.msixbundle -OutFile winget.msixbundle
+          Invoke-WebRequest -Uri https://github.com/microsoft/winget-cli/releases/download/v1.11.230-preview/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle -OutFile winget.msixbundle
           Add-AppxPackage .\winget.msixbundle
  
       - name: Verify winget
