@@ -16,7 +16,8 @@ jobs:
       - name: Install winget
         run: |
           # https://github.com/asheroto/winget-install
-          Install-Script winget-install -Force -NoExit
+          Install-Script winget-install -Force
+          winget-install -Force -ForceClose
 
       - name: Check winget
         run: |
