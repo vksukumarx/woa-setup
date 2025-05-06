@@ -13,24 +13,16 @@ jobs:
       - name: Setup visual studio
         uses: microsoft/setup-msbuild@v2
 
-      - name: winget install
-        shell: pwsh
+      - name: Install Chocolatey
         run: |
-          $ProgressPreference = 'SilentlyContinue'
-       
-          Invoke-WebRequest -Uri https://www.nuget.org/api/v2/package/Microsoft.UI.Xaml/2.8.6 -OutFile xaml.zip
-          Expand-Archive -Path xaml.zip -DestinationPath xaml
-       
-          Add-AppxPackage xaml\tools\AppX\arm64\Release\Microsoft.UI.Xaml.2.8.appx
-       
-          Invoke-WebRequest -Uri https://aka.ms/Microsoft.VCLibs.ARM64.14.00.Desktop.appx -OutFile VCLibs.appx
-          Add-AppxPackage VCLibs.appx
-       
-          Invoke-WebRequest -Uri https://github.com/microsoft/winget-cli/releases/download/v1.11.230-preview/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle -OutFile winget.msixbundle
-          Add-AppxPackage .\winget.msixbundle
- 
-      - name: Verify winget
-        run: winget --version
-         
+          Set-ExecutionPolicy Bypass -Scope Process -Force
+          [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+          iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
       - name: Install LLVM
-        run: winget install --id LLVM.LLVM -e
+        run: choco install llvm --version=20.1.4 -y
+ 
+      - name: Test shell
+        run: |
+          get-command clang
+          get-command flang
