@@ -17,10 +17,11 @@ jobs:
         uses: winpax/scoop-setup@v1.0.0
 
       - name: Install LLVM
-        run:
+        run: |
           scoop bucket add arm https://github.com/ghishadow/scoop-aarch64
           scoop install arm/llvm
 
       - name: Test shell
         run: |
           get-command clang
+          get-command flang
