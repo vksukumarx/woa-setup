@@ -15,6 +15,10 @@ jobs:
 
       - name: Install winget
         run: |
+          # https://github.com/asheroto/winget-install
+          # Should install dependencies.
+          irm asheroto.com/winget | iex
+          # Now reinstall winget to avoid errors from script above.
           # https://stackoverflow.com/a/75334942
           $URL = "https://api.github.com/repos/microsoft/winget-cli/releases/latest"
           $URL = (Invoke-WebRequest -Uri $URL).Content | ConvertFrom-Json |
