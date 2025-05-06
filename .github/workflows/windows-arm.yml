@@ -25,4 +25,4 @@ jobs:
       - name: Test shell
         run: |
           get-command clang
-          get-command flang
+          get-command flang-new
