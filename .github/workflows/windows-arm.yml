@@ -13,13 +13,13 @@ jobs:
       - name: Setup visual studio
         uses: microsoft/setup-msbuild@v2
 
-      - name: Install scoop (Windows)
-        uses: winpax/scoop-setup@v1.0.0
+      - name: Install winget
+        run: |
+          irm asheroto.com/winget | iex
 
       - name: Install LLVM
         run: |
-          scoop bucket add arm https://github.com/ghishadow/scoop-aarch64
-          scoop install arm/llvm-aarch64
+          winget search llvm
 
       - name: Test shell
         run: |
