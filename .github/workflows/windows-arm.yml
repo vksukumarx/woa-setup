@@ -20,9 +20,9 @@ jobs:
           iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
       - name: Install LLVM
-        run: choco install llvm --version=19.1.2 -y
+        run: choco install llvm --version=20.1.3 -y
  
       - name: Test shell
         run: |
           get-command clang
-          get-command flang-new
+          flamg-new.exe -v
