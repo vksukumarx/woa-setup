@@ -13,10 +13,14 @@ jobs:
       - name: Setup visual studio
         uses: microsoft/setup-msbuild@v2
 
-      - name: Install winget and LLVM
+      - name: Install winget
         run: |
           irm asheroto.com/winget | iex
-          winget search llvm
+
+      - name: Check winget
+        run: |
+          winget source update
+          winget install --id LLVM.LLVM -e
 
       - name: Test shell
         run: |
