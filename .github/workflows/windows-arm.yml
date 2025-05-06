@@ -19,7 +19,7 @@ jobs:
       - name: Install LLVM
         run: |
           scoop bucket add arm https://github.com/ghishadow/scoop-aarch64
-          scoop install arm/llvm
+          scoop install arm/llvm-aarch64
 
       - name: Test shell
         run: |
