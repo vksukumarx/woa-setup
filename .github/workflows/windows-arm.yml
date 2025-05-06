@@ -1,0 +1,19 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-11-arm
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup visual studio
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Test shell
+        shell: bash
+        run: |
+          which cl
