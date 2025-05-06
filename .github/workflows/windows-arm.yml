@@ -13,20 +13,13 @@ jobs:
       - name: Setup visual studio
         uses: microsoft/setup-msbuild@v2
 
-      - name: Install winget
-        run: |
-          # https://github.com/asheroto/winget-install
-          Install-Script winget-install -Force
-          winget-install
-
-      - name: Test winget
-        run:
-          winget search LLVM
+      - name: Install scoop (Windows)
+        uses: winpax/scoop-setup@v1.0.0
 
       - name: Install LLVM
         run:
-          winget install --id=LLVM.LLVM -e
+          scoop install main/llvm
 
       - name: Test shell
         run: |
-          get-command cl
+          get-command clang
