@@ -19,7 +19,7 @@ jobs:
 
       - name: Check winget
         run: |
-          winget /?
+          winget
 
       - name: Install LLVM
         run: |
