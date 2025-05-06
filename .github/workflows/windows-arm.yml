@@ -15,8 +15,8 @@ jobs:
 
       - name: Install winget
         run: |
-          # https://github.com/asheroto/winget-install
-          Install-Script winget-install -Force
+          # https://github.com/asheroto/winget-install 
+          Install-Script winget-install -Force -RequiredVersion 5.0.5
           winget-install -Force -AlternateInstallMethod
 
       - name: Check winget
