@@ -7,25 +7,30 @@ jobs:
   build:
     runs-on: windows-11-arm
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Full system info
+        run: cat /proc/cpuinfo
 
-      - name: Setup visual studio
-        uses: microsoft/setup-msbuild@v2
+      - name: Check number of CPU threads
+        run: sysctl -n hw.logicalcpu
+      # - name: Checkout code
+      #   uses: actions/checkout@v4
 
-      - name: Download LLVM installer for woa64
-        run: |
-          curl -L -o LLVM-woa64.exe https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.5/LLVM-19.1.5-woa64.exe
+      # - name: Setup visual studio
+      #   uses: microsoft/setup-msbuild@v2
+
+      # - name: Download LLVM installer for woa64
+      #   run: |
+      #     curl -L -o LLVM-woa64.exe https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.5/LLVM-19.1.5-woa64.exe
        
-      - name: Install LLVM
-        run: |
-          Start-Process -FilePath ".\LLVM-woa64.exe" -ArgumentList "/S" -Wait
+      # - name: Install LLVM
+      #   run: |
+      #     Start-Process -FilePath ".\LLVM-woa64.exe" -ArgumentList "/S" -Wait
        
-      - name: Add LLVM to PATH
-        run: |
-          echo "C:\Program Files\LLVM\bin" >> $GITHUB_PATH
+      # - name: Add LLVM to PATH
+      #   run: |
+      #     echo "C:\Program Files\LLVM\bin" >> $GITHUB_PATH
 
-      - name: Test shell
-        run: |
-          get-command clang
-          get-command flang
+      # - name: Test shell
+      #   run: |
+      #     get-command clang
+      #     get-command flang
